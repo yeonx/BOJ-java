@@ -14,7 +14,7 @@ public class Main {
 
         for(int i=N-1; i>=0 ;i--){
             StringBuilder sb = new StringBuilder();
-            for(int j=0;j<i;j++){import java.io.BufferedReader;
+            for(int j=0;j<i;j++){
                 sb.append(" ");
             }
             for(int j=i; j<(2*N-i)-1 ;j++){

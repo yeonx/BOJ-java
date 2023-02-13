@@ -15,6 +15,7 @@ public class Main_21318 {
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
+		StringBuilder sb = new StringBuilder();
 		
 		N = Integer.parseInt(st.nextToken());
 		
@@ -37,8 +38,9 @@ public class Main_21318 {
 			st = new StringTokenizer(br.readLine());
 			int x = Integer.parseInt(st.nextToken());
 			int y = Integer.parseInt(st.nextToken());
-			
-			System.out.println(count[y]-count[x]);
+
+			sb.append(count[y]-count[x]).append("\n");
 		}
+		System.out.println(sb);
 	}
 }

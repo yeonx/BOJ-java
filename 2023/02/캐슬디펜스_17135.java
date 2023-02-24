@@ -67,10 +67,7 @@ public class Main_bj_17135_캐슬디펜스_서울_20반_이연희 {
         				if(0<=ny && ny<N && 0<=nx && nx < M && ((Math.abs(ny-cy) + Math.abs(nx-cx)) <= D)){
                             if (copyMap[ny][nx]==1){
                                 flg=1;
-                            	if(!visE[ny][nx]) {
-                            		enemy.add(new int[] {ny, nx});
-                            		count++;
-                            	}
+                            	if(!visE[ny][nx]) enemy.add(new int[] {ny, nx});
                             	visE[ny][nx] = true;
                                 break;
                             }
@@ -85,14 +82,10 @@ public class Main_bj_17135_캐슬디펜스_서울_20반_이연희 {
     				
         		}
         	}
-        	for(int[] point : enemy) {
-        		copyMap[point[0]][point[1]]=0;
-//        		System.out.println(point[0] + " " + point[1]);
-        	}
-//        	count += enemy.size();
+        	for(int[] point : enemy) copyMap[point[0]][point[1]]=0;
+        	count += enemy.size();
             down();
         }
-        
         max = Math.max(max, count);
     }
     static void comb(int cnt, int start) {
@@ -100,13 +93,11 @@ public class Main_bj_17135_캐슬디펜스_서울_20반_이연희 {
             attack();
             return;
         }
-
         for(int i=start;i<M;i++) {
             pick[cnt] = i;
             comb(cnt+1, i+1);
         }
     }
-
 
     public static void main(String[] args) throws IOException {
 
@@ -127,7 +118,6 @@ public class Main_bj_17135_캐슬디펜스_서울_20반_이연희 {
             }
         }
         comb(0,0);
-
         System.out.println(max);
     }
 }

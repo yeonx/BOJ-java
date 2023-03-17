@@ -1,0 +1,59 @@
+import java.io.*;
+import java.util.*;
+
+public class Main_bj_1966_프린터 {
+
+    static class Paper{
+        int order;
+        int important;
+
+        public Paper(int order, int important){
+            this.order = order;
+            this.important = important;
+        }
+    }
+
+    public static void main(String[] args) throws IOException{
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        StringBuilder sb = new StringBuilder();
+        int T = Integer.parseInt(st.nextToken());
+
+        for(int t=0;t<T;t++){
+            st = new StringTokenizer(br.readLine());
+            ArrayDeque<Paper> q = new ArrayDeque<>();
+            PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
+
+            int N = Integer.parseInt(st.nextToken());
+            int M = Integer.parseInt(st.nextToken());
+            st = new StringTokenizer(br.readLine());
+
+            for(int i=0;i<N;i++){
+                int tmp = Integer.parseInt(st.nextToken());
+                pq.offer(tmp);
+                q.offer(new Paper(i,tmp));
+            }
+
+            int index=1;
+            int max = pq.poll();
+
+            while (!q.isEmpty()){
+                Paper tmp =  q.poll();
+
+                if(tmp.order==M && max==tmp.important){
+                    sb.append(index + "\n");
+                    break;
+                }else if (max!=tmp.important){
+                    q.offer(tmp);
+                }else{
+                    max = pq.poll();
+                    index++;
+                }
+            }
+
+        }
+        System.out.print(sb);
+
+    }
+}

@@ -1,9 +1,5 @@
-package day0404;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.io.*;
+import java.util.*;
 
 public class Main_bj_14891_톱니바퀴 {
 	
@@ -24,7 +20,6 @@ public class Main_bj_14891_톱니바퀴 {
 				saw[i][j] = tmp.charAt(j) - '0';
 			}
 		}
-		
 		for(int i=0;i<4;i++) {
 			t[i][right] = 2;
 			t[i][left] = 6;
@@ -41,16 +36,15 @@ public class Main_bj_14891_톱니바퀴 {
 			checkDirection(num-1, ro);
 			rotation();
 		}
-		int mul = 1;
-		for(int j=0;j<4;j++) {
+
+		for(int j=0, mul=1;j<4;j++,mul*=2) {
 			int tmp = t[j][left]+2;
 			tmp = tmp%8;
 			answer += (saw[j][tmp])*mul;
-			mul = mul*2;
 		}
 		System.out.println(answer);
-		
 	}
+	
 	static void rotation() {
 		for(int i=0;i<4;i++) {
 			if(direction[i]==0) continue;
@@ -75,6 +69,5 @@ public class Main_bj_14891_톱니바퀴 {
 				checkDirection(num-1, d*(-1));
 			}
 		} 
-		else return;
 	}
 }
